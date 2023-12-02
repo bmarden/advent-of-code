@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	path, _ := os.Getwd()
-	fmt.Println(path)
 	fileLines := util.ReadFile("2023/day1/part1/input.txt")
 	sum := 0
 

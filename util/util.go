@@ -8,9 +8,13 @@ import (
 )
 
 func ReadFile(path string) []string {
-	curPath, _ := os.Getwd()
-	fmt.Println(curPath)
-	file, err := os.Open(path)
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	file, err := os.Open(homeDir + "/code/advent-of-code/" + path)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -31,4 +35,13 @@ func CheckStrIsNumeric(s string) (string, error) {
 	}
 
 	return "", fmt.Errorf("could not convert %s to int", s)
+}
+
+func Reverse(s string) string {
+	runes := []rune(s)
+
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes)
 }
