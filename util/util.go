@@ -53,3 +53,8 @@ func MustAtoi(s string) int {
 	}
 	return i
 }
+
+func IsDigit(s string) bool {
+	_, err := strconv.Atoi(s)
+	return err == nil
+}
