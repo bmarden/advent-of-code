@@ -11,14 +11,13 @@ import (
 func main() {
 	input := util.ReadFile("2024/day1/input.txt")
 
-	// diffs := []int{}
 	allListTotal := 0
 
 	list1 := []int{}
 	list2 := []int{}
 
 	for _, i := range input {
-		num1, num2 := getLists(i)
+		num1, num2 := getLocationIds(i)
 		list1 = append(list1, util.MustAtoi(num1))
 		list2 = append(list2, util.MustAtoi(num2))
 	}
@@ -32,15 +31,7 @@ func main() {
 	fmt.Println(allListTotal)
 }
 
-func convertSliceStringToIntSlice(slice []string) []int {
-	var intSlice []int
-	for _, s := range slice {
-		intSlice = append(intSlice, util.MustAtoi(s))
-	}
-	return intSlice
-}
-
-func getLists(lines string) (string, string) {
+func getLocationIds(lines string) (string, string) {
 	lists := strings.Fields(lines)
 	list1 := lists[0]
 	list2 := lists[1]
